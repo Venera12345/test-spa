@@ -41,7 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
     );
     this.timerModuleCtrl.setValue(300);
     this.arraySizeModuleCtrl.setValue(1000);
-    this.additionalArrayIdsModuleCtrl.setValue('200');
   }
   ngOnInit(): void {
       

@@ -20,7 +20,7 @@ export const ARRAY_ITEMS = [ {
   id: '300',
   int: 444,
   float: 0.4884759584845489809809898980909809878777887687787689908,
-  color: 'green',
+  color: 'grey',
   child: {
     id: '10',
     color: 'green',
@@ -32,7 +32,7 @@ export const ARRAY_ITEMS = [ {
   color: 'green',
   child: {
     id: '10',
-    color: 'green',
+    color: 'pink',
   },
 }, {
   id: '500',
@@ -44,4 +44,3 @@ export const ARRAY_ITEMS = [ {
     color: 'green',
   },
 }]
-

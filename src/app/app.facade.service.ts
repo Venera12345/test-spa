@@ -11,12 +11,15 @@ export class AppFacadeService implements OnDestroy {
   private mokcs$: BehaviorSubject<IItem[]>;
   private filterLength$: BehaviorSubject<number | null>;
   private filterListArray$: BehaviorSubject<number[]>;
+  private TOTAL = 1000;
+  private COLORE = ['green', 'red', 'purple', 'blue', 'grey', 'pink', 'yellow', 'orange', 'beige', 'black', 'white'];
   
   constructor() {
     this.destroy$ = new Subject<void>();
     this.mokcs$ = new BehaviorSubject(ARRAY_ITEMS);
     this.filterLength$ = new BehaviorSubject<number | null>(1000);
-    this.filterListArray$ = new BehaviorSubject([965, 200])
+    this.filterListArray$ = new BehaviorSubject<number[]>([]);
+    this.createMocks();
     this.listItems$ = combineLatest([
     this.mokcs$,
     this.filterLength$,
@@ -35,11 +38,28 @@ export class AppFacadeService implements OnDestroy {
   }
 
   public setFilterLength(value: number | null): void {
-    this.filterLength$.next(value)
+    this.filterLength$.next(value);
   }
 
   public setFilterListArray(value: number[]): void {
-    this.filterListArray$.next(value)
+    this.filterListArray$.next(value);
+  }
+
+  private createMocks(): void {
+    const list = [];
+    for (let index = 0; index < this.TOTAL; index++) {
+      list.push({
+          id: Math.round(Math.random()*1000) + '',
+          int: Math.round(Math.random()*1000),
+          float: Math.random(),
+          color: this.COLORE[Math.round(Math.random()*10)],
+          child: {
+            id: Math.round(Math.random()*1000) + '',
+            color: this.COLORE[Math.round(Math.random()*10)],
+          },
+      });
+    }
+    this.mokcs$.next(list);
   }
 
   ngOnDestroy(): void {
